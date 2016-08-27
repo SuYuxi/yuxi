@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta name="author" content="Yuxi">
+    <meta name="description" content="Mobiledevice Login Screen">
+    <meta name="keywords" content="aphro login signup signin">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Login-Mobile.css">
+    <base href="">
+    <base target="_self">
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" display="none">
+        <defs>
+            <symbol id="IconFacebook" viewbox="0 0 32 32">
+                <title>FacebookLogo</title>
+                <path d="M16.011 0.74c-8.428 0-15.26 6.832-15.26 15.26 0 8.184 6.443 14.863 14.533 15.242 0-1.554 0-7.091 0-11.809h-2.418v-4.324h2.418v-2.797c0-2.003 0.952-5.133 5.133-5.133l3.768 0.014v4.197c0 0-2.29 0-2.735 0-0.446 0-1.079 0.222-1.079 1.177v2.541h3.875l-0.445 4.323h-3.432c0 4.178 0 9.091 0 11.194 6.304-1.876 10.902-7.714 10.902-14.627-0-8.428-6.832-15.26-15.26-15.26z"></path>
+            </symbol>
+            <symbol id="IconTwitter" viewbox="0 0 32 32">
+                <title>TwitterLogo</title>
+                <path class="path1" d="M16 0.75c-8.422 0-15.25 6.828-15.25 15.25s6.828 15.25 15.25 15.25c8.422 0 15.25-6.828 15.25-15.25s-6.828-15.25-15.25-15.25zM24.080 11.856c0.008 0.179 0.012 0.359 0.012 0.539 0 5.509-4.194 11.862-11.862 11.862-2.354 0-4.546-0.69-6.391-1.873 0.326 0.039 0.658 0.058 0.994 0.058 1.953 0 3.751-0.666 5.178-1.785-1.824-0.033-3.364-1.239-3.895-2.895 0.255 0.049 0.516 0.075 0.784 0.075 0.38 0 0.749-0.051 1.098-0.146-1.907-0.383-3.344-2.068-3.344-4.088 0-0.018 0-0.035 0-0.052 0.562 0.312 1.205 0.5 1.888 0.521-1.119-0.748-1.855-2.024-1.855-3.47 0-0.764 0.206-1.48 0.565-2.096 2.056 2.522 5.128 4.182 8.593 4.356-0.071-0.305-0.108-0.623-0.108-0.95 0-2.302 1.867-4.169 4.169-4.169 1.199 0 2.283 0.506 3.043 1.317 0.95-0.187 1.842-0.534 2.648-1.012-0.311 0.974-0.972 1.791-1.833 2.307 0.843-0.101 1.647-0.325 2.395-0.657-0.559 0.836-1.266 1.57-2.080 2.158z"></path>
+            </symbol>
+        </defs>
+    </svg>
+    <div class="PageWrap">
+        <div class="HeaderContainer">
+            <div class="Logo">
+                <img src="./img/aphro.png">
+            </div>
+        </div>
+        <div class="ContainWrap">
+            <div class="BodyContainer">
+                <div class="SigninForm">
+                    <div class="FormTitle FieldRow">
+                        <span>SIGN IN TO CONTINUE</span>
+                    </div>
+                    <form class="InputForm" action="" method="post" autocomplete="on">
+                        <div class="InputUsername FieldRow">
+                            <input id="InputUsername" name="User name" type="text" maxlength="32" placeholder="User name">
+                        </div>
+                        <div class="InputPassword FieldRow">
+                            <input id="InputPassword" name="Password" type="password" maxlength="64" placeholder="Password">
+                        </div>
+                        <div class="Persistent FieldRow">
+                            <label for="Persistent">
+                                <input name="Persistent" type="checkbox" id="Persistent" value="1">
+                                <span>Keep me singed in</span>
+                            </label>
+                        </div>
+                        <div class="FormBtn FieldRow">
+                            <button class="SubmitBtn" type="submit">
+                                <span>Sign in</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="SnsLogin">
+                    <div class="SnsTitle FieldRow">
+                        <span>USE MY ACCOUNT TO SIGN UP</span>
+                    </div>
+                    <div class="SnsLogo FieldRow">
+                        <a href="">
+                            <svg class="IconFacebook">
+                                <use xlink:href="#IconFacebook"></use>
+                            </svg>
+                        </a>
+                        <a href="">
+                            <svg class="IconTwitter">
+                                <use xlink:href="#IconTwitter"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="AccountSupport">
+                    <div class="Forgetpassword FieldRow">
+                        <a href="">I have forgotten my password</a>
+                    </div>
+                    <div class="CreateAccount FieldRow">
+                        <a href="">Sign up to create your account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="FooterContainer"></div>
+    </div>
+    <script type="text/javascript" src="Login-Mobile.js"></script>
+</body>
+
+</html>
