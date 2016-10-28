@@ -23,6 +23,7 @@ class Solution(object):
 			ans += product
 		return ans
 
+#Backtracking
 class Solution(object):
 	def countNumbersWithUniqueDigits(self, n):
 		def BackTrack(target, bits, inx):

@@ -15,6 +15,7 @@ class Solution(object):
             if(d['count'] == 0):
                 break
         return result
+		
 class Solution(object):
     def intersect(self, nums1, nums2):
         if(not nums1 or not nums2):

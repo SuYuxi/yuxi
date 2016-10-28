@@ -4,7 +4,7 @@ class Solution(object):
 	def kthSmallest(self, matrix, k):
 		return list(heapq.merge(*matrix))[k-1]
 
-#Binary search
+#binary search
 class Solution(object):
 	def kthSmallest(self, matrix, k):
 		minval, maxval = matrix[0][0], matrix[-1][-1]
@@ -24,6 +24,7 @@ class Solution(object):
 				maxval = midval
 		return minval
 
+#binary search model
 def binary(target, row):
 	l, r = 0, len(row)-1
 	while(l < r):
@@ -37,19 +38,7 @@ def binary(target, row):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#from Paper
 class Solution(object):
     def kthSmallest(self, matrix, k):
 
