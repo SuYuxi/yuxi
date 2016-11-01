@@ -1,5 +1,5 @@
 Binary Search 
-def binary(target, row): #取小于等于target的最大整数，floor和mid+1很重要
+def binary(target, row): #取大于等于target的最小整数，floor和mid+1很重要
 	l, r = 0, len(row)-1
 	while(l < r):
 		mid = (l + r) >> 1 #floor
@@ -9,7 +9,7 @@ def binary(target, row): #取小于等于target的最大整数，floor和mid+1�
 			r = mid 
 	return l
 
-def binary(target, row): #取大于等于target的最小整数，ceil和mid-1很重要
+def binary(target, row): #取小于等于target的最大整数，ceil和mid-1很重要
 	l, r = 0, len(row)-1
 	while(l < r):
 		mid = math.ceil((l + r) / 2) 
