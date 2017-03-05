@@ -17,7 +17,7 @@ class Solution(object):
 		for i in range(m+1):
 			for j in range(1,n+1):
 				if(p[j - 1] == '*'):
-					state[i][j] = state[i][j-2] or (i > 0 and (s[i-1] == p[j-2] or p[j-2] == '.') and state[i-1][j])
+					state[i][j] = (j > 1 and state[i][j-2]) or (i > 0 and (s[i-1] == p[j-2] or p[j-2] == '.') and state[i-1][j])
 				else: 
 					state[i][j] = i > 0 and state[i-1][j-1] and (s[i-1] == p[j-1] or p[j-1] == '.')
 		return state[m][n]
