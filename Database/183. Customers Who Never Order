@@ -1,0 +1,2 @@
+select A.Name as Customers from Customers as A left join Orders as B on A.Id = B.CustomerId where B.CustomerId is Null;
+select A.Name as Customers from Customers as A where A.Id not in (select B.CustomerId from Orders B);
