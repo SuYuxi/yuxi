@@ -1,0 +1,7 @@
+select D.Name as Department, E.Name as Employee, E.Salary from Employee as E, Department as D, (select DepartmentId, max(Salary) as M from Employee group by DepartmentId) as T where T.M = E.Salary and E.DepartmentId = D.Id and D.Id = T.DepartmentId;
+
+select D.Name as Department, E.Name as Employee, E.Salary 
+from Employee as E, Department as D 
+where E.DepartmentId = D.Id
+and (E.DepartmentId, E.Salary) in
+(select DepartmentId, max(Salary) as max from Employee group by departmentId);

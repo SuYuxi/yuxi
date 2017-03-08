@@ -1,0 +1,2 @@
+select a.Id from Weather as a, Weather as b where DATEDIFF(a.Date, b.Date) = 1 and a.Temperature > b.Temperature;
+select a.Id from Weather as a, Weather as b where TO_DAYS(a.Date) - TO_DAYS(b.date) = 1 and a.Temperature > b.Temperature;

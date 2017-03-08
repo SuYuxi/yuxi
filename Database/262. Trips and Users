@@ -1,0 +1,15 @@
+select T.Request_at as Day, 
+round(sum(case when T.Status like "cancelled%" then 1 else 0 end) / count(*), 2) as "Cancellation Rate" 
+from Trips as T left join Users as U on T.Client_Id = U.Users_Id
+where T.Request_at between "2013-10-01" and "2013-10-03" 
+and U.Banned = "No"
+group by T.Request_at
+order by T.Request_at;
+
+select T.Request_at as Day, 
+round(sum(if(T.Status != "completed", True, False)) / count(*), 2) as "Cancellation Rate" 
+from Trips as T left join Users as U on T.Client_Id = U.Users_Id
+where T.Request_at between "2013-10-01" and "2013-10-03" 
+and U.Banned = "No"
+group by T.Request_at
+order by T.Request_at;
