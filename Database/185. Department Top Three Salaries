@@ -3,3 +3,13 @@ from Department as D, Employee as E
 where (select count(distinct Salary) from Employee where DepartmentId = E.DepartmentId and Salary > E.Salary) < 3
 and E.DepartmentId = D.Id
 order by D.Name, E.Salary desc;
+
+
+select D.Name as Department, E.Name as Employee, E.Salary
+from Department as D, Employee as E, Employee as R
+where E.Salary <= R.Salary
+and E.DepartmentId = R.DepartmentId
+and D.Id = E.DepartmentId
+group by D.Id, E.Name, E.Salary
+having count(distinct R.Salary) < 4
+order by Department, Salary Desc;
