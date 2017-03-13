@@ -4,6 +4,10 @@ class Solution(object):
 		nums.sort()
 		l = len(nums)
 		for left in range(l - 2):
+			if(nums[left] + nums[left+1] + nums[left+2] > 0):
+				break
+			if(nums[left] + nums[l-2] + nums[l-1] < 0):	
+				continue
 			if(left > 0 and nums[left] == nums[left-1]):
 				continue
 			mid, right = left+1, l-1
