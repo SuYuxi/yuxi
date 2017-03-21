@@ -93,10 +93,8 @@ vector<string> getLongestSubString(string inputStr, string mode) {
         }
         left = right;
     }
-    string tempSubStr;
     for(const int& pos : positions) {
-        tempSubStr =  inputStr.substr(pos, maxlen);
-        longestSubStr.insert(tempSubStr);
+        longestSubStr.insert(inputStr.substr(pos, maxlen));
     }
     vector<string> sortedLongestSubStr(longestSubStr.begin(), longestSubStr.end());
     sort(sortedLongestSubStr.begin(), sortedLongestSubStr.end());
