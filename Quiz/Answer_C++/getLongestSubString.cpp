@@ -17,12 +17,11 @@ int main() {
     cout << "Please input a string to retrieve the longest substring" << endl;
     cin >> inputData;
     longestSubStr = getLongestSubString(inputData, mode);
-    longestSubStr = getLongestSubString(inputData, mode);
-    cout << "The longest " + mode + " Value Part String showed as below:"<< endl;
+    cout << "The longest " + mode + " Value Part String show as below:"<< endl;
     for (const string& subStr : longestSubStr) {
         cout << subStr << endl;
     }
-    return 0;
+    return 1;
 }
 
 //Define function that getting the longest substring that meets mode requirement
@@ -70,7 +69,7 @@ vector<string> getLongestSubString(string inputStr, string mode) {
     }
     set<string> longestSubStr;
     int left = 0, right = 0;
-    int maxlen = 0, subStrLen;
+    int maxLen = 0, subStrLen;
     vector<int> positions;
     while(left < inputLength) {
         right += 1;
@@ -83,18 +82,18 @@ vector<string> getLongestSubString(string inputStr, string mode) {
             }
         }
         subStrLen = right - left;
-        if(subStrLen > maxlen) {
-            maxlen = subStrLen;
+        if(subStrLen > maxLen) {
+            maxLen = subStrLen;
             positions.clear();
             positions.push_back(left);
         }
-        else if(subStrLen == maxlen) {
+        else if(subStrLen == maxLen) {
             positions.push_back(left);
         }
         left = right;
     }
     for(const int& pos : positions) {
-        longestSubStr.insert(inputStr.substr(pos, maxlen));
+        longestSubStr.insert(inputStr.substr(pos, maxLen));
     }
     vector<string> sortedLongestSubStr(longestSubStr.begin(), longestSubStr.end());
     sort(sortedLongestSubStr.begin(), sortedLongestSubStr.end());
