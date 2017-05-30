@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/debug/MyAwesomeProject.build/master.swiftdeps"
+  },
+  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/Sources/main.swift": {
+    "dependencies": "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/debug/MyAwesomeProject.build/main.d",
+    "object": "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/debug/MyAwesomeProject.build/main.swift.o",
+    "swiftmodule": "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/debug/MyAwesomeProject.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/debug/MyAwesomeProject.build/main.swiftdeps"
+  }
+}

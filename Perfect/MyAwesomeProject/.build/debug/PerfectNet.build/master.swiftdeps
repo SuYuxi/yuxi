@@ -1,0 +1,9 @@
+version: "Apple Swift version 3.1 (swiftlang-802.0.48 clang-802.0.38)"
+options: "b7e65f107b56c90b0d25125d163038dd"
+build_time: [544813552, 369732000]
+inputs:
+  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/checkouts/Perfect-Net.git-3268755499654502659/Sources/Net.swift": [544813537, 0]
+  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/checkouts/Perfect-Net.git-3268755499654502659/Sources/NetEvent.swift": [544813537, 0]
+  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/checkouts/Perfect-Net.git-3268755499654502659/Sources/NetNamedPipe.swift": [544813537, 0]
+  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/checkouts/Perfect-Net.git-3268755499654502659/Sources/NetTCP.swift": [544813537, 0]
+  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/.build/checkouts/Perfect-Net.git-3268755499654502659/Sources/NetTCPSSL.swift": [544813537, 0]
