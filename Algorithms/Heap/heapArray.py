@@ -24,8 +24,13 @@ class Heap(object):
 		cur = inx
 		lower = cur * 2 + 1 
 		while(lower < size):
-			if(_stack[cur] > _stack[lower]
-
+			if(lower+1 < size and _stack[lower] > _stack[lower+1]):
+				lower += 1
+			if(_stack[cur] > _stack[lower]):
+				_stack[cur], _stack[lower] = _stack[lower], _stack[cur] 
+			else:
+				break
+				
 	def pop(self):
 		if(x):
 			top = x[0]
