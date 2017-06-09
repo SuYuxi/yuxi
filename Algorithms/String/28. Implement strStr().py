@@ -1,33 +1,37 @@
 #kmp 
 class Solution(object):
 	def strStr(self, haystack, needle):
-		def kmpNext(needle):
-			next = list()
-			for L in range(len(needle)):
-				left = needle[:L]
-				right = needle[-L:]
-				longest = 0
-				if(left == right):
-					next.append(L)
-					longest = L
+		def kmpInit(needle):
+			length = len(needle)
+			kmpList = [0] * length
+			left, right = 0, 1
+			while(right < length):
+				if(needle[left] == needle[right]):
+					left += 1
+					kmpList[right] = left
+					right += 1
 				else:
-					next.append(longest)
-			return next
+					if(left != 0):
+						left = kmpList[left-1]
+					else:
+						kmpList[right] = 0
+						right += 1
+			return kmpList
 
-		if(not haystack and not needle):
-			return 0
-		next = kmpNext(needle)
+		if(not needle): return 0
+		kmpList = kmpInit(needle)
 		lenNeedle = len(needle)
 		lenHay = len(haystack)
-		i, j = 0, 0 
-		while(i <= lenHay - lenNeedle):
-			while(j < lenNeedle):
-				if(haystack[i+j] == needle[j]):
-					j += 1
+		i, j = 0, 0
+		while(i < lenHay):
+			if(haystack[i] == needle[j]):
+				i += 1
+				j += 1
+				if(j == lenNeedle):
+					return i - j
+			else:
+				if(j != 0):
+					j = kmpList[j-1]
 				else:
-					i += ((j - next[j]) or 1)
-					j = next[j]
-					break
-			if(j == lenNeedle):
-				return i
-		return -1 
+					i += 1
+		return -1
