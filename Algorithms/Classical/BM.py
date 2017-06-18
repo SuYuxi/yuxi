@@ -1,6 +1,7 @@
 #Boyer-Moore
 def bmSearch(self, text, pattern): 
 	def _good(self, pattern):
+		
 	def _bad(self, pattern):
 		length = len(pattern)
 		pos = dict()
