@@ -1,7 +1,14 @@
 #Boyer-Moore
 def bmSearch(self, text, pattern): 
-	def _goodStr(self, pattern):
-	def _badStr(self, pattern):
+	def _good(self, pattern):
+	def _bad(self, pattern):
+		length = len(pattern)
+		pos = dict()
+		inx = 0
+		while(inx < length):
+			pos[pattern[inx]] = inx	
+			inx += 1
+		return pos
 	lenP, lenT = len(pattern), len(text)
 	suff = 	
 	badShift = 
