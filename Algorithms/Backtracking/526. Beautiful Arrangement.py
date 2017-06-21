@@ -6,10 +6,10 @@ class Solution(object):
 				return cache[key]
 			if(pos == 1):
 				return 1
-			cache[key] = sum(backtracking(pos-1, unvisited - {i})) for i in unvisited if not (i % pos) or not(pos % i))
+			cache[key] = sum(backtracking(pos-1, unvisited[:inx] + unvisited[inx+1:]) for inx, i in enumerate(unvisited) if not (i % pos) or not (pos % i))
 			return cache[key]
 		cache = dict()
-		return backtracking(N, set(range(1, N+1)))
+		return backtracking(N, tuple(range(1, N+1)))
 
 class Solution(object):
     def countArrangement(self, N):
