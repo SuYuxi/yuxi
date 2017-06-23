@@ -26,6 +26,28 @@ class Solution(object):
 				node = stack.pop()
 		return L[::-1]
 
+#classic
+class Solution(object):
+    def postorderTraversal(self, root):
+		stack = list()
+		node = root
+		pre = None
+		res = list()
+		while(stack or node):
+			while(node):
+				stack.append(node)
+				node = node.left
+			if(stack):
+				node = stack[-1]
+				if(not node.right or node.right == pre):
+					res.append(node.val)
+					stack.pop()
+					pre = node
+					node = None
+				else:
+					node = node.right
+		return res
+
 #morris traversal
 class Solution(object):
 	def postorderTraversal(self, root):
