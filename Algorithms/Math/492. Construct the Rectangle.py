@@ -4,4 +4,3 @@ class Solution(object):
 		for i in range(sqr, 0, -1):
 			if(not area % i):
 				return [area / i, i]
-
