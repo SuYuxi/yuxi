@@ -1,8 +1,8 @@
 #Boyer-Moore
 def bmSearch(self, text, pattern): 
-	def _good(self, pattern):
+	def _bmGs(self, pattern):
 		
-	def _bad(self, pattern):
+	def _bmBc(self, pattern):
 		length = len(pattern)
 		pos = dict()
 		inx = 0
@@ -14,14 +14,16 @@ def bmSearch(self, text, pattern):
 	suff = 	
 	badShift = 
 	goodShift = 
-	tailP = lenP - 1
-	subP = tailP
-	while(tailP < lenT):
-		while(subP >= 0 and patern[lenP - 1 - subP] == text[tailP - 1 - subP]):
-			subP -= 1
-		if(subP == lenP):
-			return subP
-		tailP += max(badShift[subP], goodShift[subP])
-		subP = 0
+	tailT = lenP - 1
+	inxT = tailT
+	inxP = lenP - 1
+	while(tailT < lenT):
+		while(inxP >= 0 and patern[inxP] == text[inxT]):
+			inxP -= 1
+			inxT -= 1
+		if(inxP < 0):
+			return inxT + 1
+		tailP += max(badShift[inxP], goodShift[inxP])
+		inxP = 0
 	return -1
 	
