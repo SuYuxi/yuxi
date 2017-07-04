@@ -1,3 +1,4 @@
+#DFS
 class Solution(object):
     def findCircleNum(self, M):
 		def traverse(relation):
@@ -15,3 +16,29 @@ class Solution(object):
 			res += 1
 			traverse(relation)
 		return res
+	
+#Union find (full version)
+class Solution(object):
+    def findCircleNum(self, M):
+		def find(no, union):
+			depth = 1
+			while(union[no] != no):
+				no, union[no] = union[no], union[union[no]]
+				depth += 1
+			return (no, depth)
+
+		length = len(M)
+		Id = [i for i in range(length)]
+		group = length
+		for r in range(length): 
+			for l in range(r + 1, length):
+				if(M[r][l]):
+					idR, depthR = find(r, Id)
+					idL, depthL = find(l, Id)
+					if(idR != idL):
+						group -= 1
+						if(depthL > depthR):
+							Id[idR] = idL
+						else:
+							Id[idL] = idR
+		return group
