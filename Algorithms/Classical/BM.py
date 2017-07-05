@@ -1,29 +1,41 @@
 #Boyer-Moore
-def bmSearch(self, text, pattern): 
-	def _bmGs(self, pattern):
-		
-	def _bmBc(self, pattern):
-		length = len(pattern)
+def bmSearch(text, pattern): 
+	def _bmGs(pattern, length):
+		pos = [length] * (length - 1) + [1]
+		inx = length - 1
+		inxPre = length - 2
+		inxSuff = length - 1
+		while(inx >= 0):
+			while(inxPre >= 0):
+				if(pattern[inxSuff] != pattern[inxPre]):
+					inxSuff = length
+				inxSuff -= 1
+				inxPre -= 1
+				if(inxSuff < inx):
+					pos[inx-1] = inxSuff - inxPre
+					break
+			inx -= 1
+		return pos
+
+	def _bmBc(needle, length):
 		pos = dict()
 		inx = 0
 		while(inx < length):
-			pos[pattern[inx]] = inx	
+			pos[needle[inx]] = inx
 			inx += 1
 		return pos
+
+	if(not needle):
+		return 0
 	lenP, lenT = len(pattern), len(text)
-	suff = 	
-	badShift = 
-	goodShift = 
-	tailT = lenP - 1
-	inxT = tailT
-	inxP = lenP - 1
-	while(tailT < lenT):
-		while(inxP >= 0 and patern[inxP] == text[inxT]):
-			inxP -= 1
-			inxT -= 1
-		if(inxP < 0):
-			return inxT + 1
-		tailP += max(badShift[inxP], goodShift[inxP])
-		inxP = 0
+	badShift = _bmBc(pattern, lenP)
+	goodShift = _bmGs(pattern, lenP)
+	inx = 0
+	while(inx <= lenT - lenP):
+		bias = lenP - 1
+		while(bias >= 0 and pattern[bias] == text[inx + bias]):
+			bias -= 1
+		if(bias < 0):
+			return inx
+		inx += max(bias - badShift.setdefault(text[inx + bias], -1), goodShift[bias])
 	return -1
-	
