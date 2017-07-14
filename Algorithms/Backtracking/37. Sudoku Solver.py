@@ -44,8 +44,6 @@ class Solution(object):
 			return True
 		cell.possibility -= 1
 		cell.bits[val] = 1
-		if(cell.possibility < 1):
-			return False
 		if(cell.possibility == 1):
 			for bit in range(1, 10):
 				if(not cell.bits[bit]):
