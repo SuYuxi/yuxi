@@ -1,5 +1,0 @@
-version: "Apple Swift version 3.1 (swiftlang-802.0.48 clang-802.0.38)"
-options: "a2aa20fe6c1582c8f41f08ef0bcab5f4"
-build_time: [544813555, 631559000]
-inputs:
-  "/Users/suyuxi/Git/Perfect/MyAwesomeProject/Sources/main.swift": [544813434, 0]
