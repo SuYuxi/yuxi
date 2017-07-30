@@ -38,5 +38,3 @@ class Solution(object):
 			nums[i], nums[j] = nums[j], nums[i]
 		reverse(i+1, length - 1)
 		return
-
-
