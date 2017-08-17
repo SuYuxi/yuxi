@@ -3,7 +3,7 @@ class Solution(object):
 		if(not nums):
 			return False
 		left, right = 0, len(nums) - 1
-		while(left < right):
+		while(left <= right):
 			mid = (left + right) >> 1
 			if(nums[mid] == target):
 				return True
@@ -19,4 +19,4 @@ class Solution(object):
 					right = mid - 1
 			else:
 				left += 1
-		return True if nums[left] == target else False
+		return False
