@@ -17,7 +17,7 @@ class Solution(object):
 		L = []
 		stack = []
 		node = root
-		while(node or len(stack)):	
+		while(node or stack):	
 			if(node):
 				stack.append(node)
 				node = node.left
