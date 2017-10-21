@@ -33,3 +33,18 @@ class Solution(object):
 #dp
 class Solution(object):
     def generateTrees(self, n):
+		if(n == 0):
+			return []
+		dp = [[[None] for _ in range(n + 2)] for _ in range(n + 2)]
+		for end in range(1, n + 1):
+			dp[end][end] = [TreeNode(end)]
+			for start in range(end - 1, 0, -1):
+				dp[start][end] = list() 
+				for root in range(start, end + 1):
+					for leftSubtree in dp[start][root - 1]:
+						for rightSubtree in dp[root + 1][end]:
+							node = TreeNode(root)
+							node.left = leftSubtree  
+							node.right = rightSubtree 
+							dp[start][end].append(node)
+		return dp[1][n]
