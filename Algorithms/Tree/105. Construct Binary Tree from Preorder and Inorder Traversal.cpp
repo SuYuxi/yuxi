@@ -18,7 +18,7 @@ public:
 
 private:
 	TreeNode* helper(vector<int>& preorder, vector<int>& inorder, int& p, int& i, TreeNode* stop) {
-		if(i < inorder.size() and (stop == nullptr || inorder[i] != stop->val)) {
+		if(i < inorder.size() && (stop == nullptr || inorder[i] != stop->val)) {
 			TreeNode* root = new TreeNode(preorder[p++]);
 			root->left = helper(preorder, inorder, p, i, root); 
 			i++;
