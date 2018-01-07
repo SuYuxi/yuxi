@@ -35,27 +35,22 @@ public:
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
-		if(root == nullptr) return;
-		if(root->left) root->left->next = root->right;
-		if(root->right && root->next) root->right->next = root->next->left;
-		connect(root->left);
-		connect(root->right);
-	}
-};
-
-class Solution {
-public:
-    void connect(TreeLinkNode *root) {
-		if(!root) return;
-		TreeLinkNode *node;
-		while(root->left) {
-			node = root;
-			while(node) {
-				node->left->next = node->right;
-				if(node->next) node->right->next = node->next->left;
-				node = node->next;
+		TreeLinkNode *node, *head, *pre;
+		while(root) {
+			head = new TreeLinkNode(NULL);
+			pre = head;
+			while(root) {
+				if(root->left) {
+					pre->next = root->left;
+					pre = root->left;
+				}
+				if(root->right) {
+					pre->next = root->right;
+					pre = root->right;
+				}
+				root = root->next;
 			}
-			root = root->left;
+			root = head->next;
 		}
 	}
 };
