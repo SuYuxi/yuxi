@@ -2,4 +2,3 @@ Feel free to pull any Algorithm Solutions of **Leetcode** and **Atcoder** that y
 </br>
 The file has been classified by category.
 </br>
-All Algorithms wrote by **SuYuxi**.
