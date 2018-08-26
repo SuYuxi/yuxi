@@ -4,11 +4,11 @@ public:
 		if(prices.size() == 0) return 0;
 		int k = 2;
 		vector<int> dp(k + 1, 0);
-		vector<int> low(k + 1, prices[0]);
+		vector<int> Min(k + 1, prices[0]);
 		for(int i = 1; i < prices.size(); i++) {
 			for(int k = 2; k >= 1; k--) {
-				low[k] = min(low[k], prices[i] - dp[k-1]);
-				dp[k] = max(dp[k], prices[i] - low[k]);
+				Min[k] = min(Min[k], prices[i] - dp[k-1]);
+				dp[k] = max(dp[k], prices[i] - Min[k]);
 			}
 		}
 		return dp[k];
