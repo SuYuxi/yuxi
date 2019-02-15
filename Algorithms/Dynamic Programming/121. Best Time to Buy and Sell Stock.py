@@ -37,6 +37,7 @@ class Solution(object):
 			maxCur = max(0, maxCur + i)
 			maxSofar = max(maxSofar, maxCur)
 		return maxSofar
+
 #Lite version
 class Solution(object):
 	def maxProfit(self, prices):
