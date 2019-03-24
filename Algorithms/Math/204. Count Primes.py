@@ -1,3 +1,4 @@
+#Sieve of Eratosthenes
 class Solution(object):
     def countPrimes(self, n):
 		if(n < 3):
