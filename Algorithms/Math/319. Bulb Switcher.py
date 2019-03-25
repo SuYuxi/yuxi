@@ -17,6 +17,8 @@ class Solution(object):
 			return ans
 			
 #math
+##find divisors
+##light be left on only if the number of divisors is odd
 class Solution(object):
 	def bulbSwitch(self, n):
 		return int(n**0.5)
@@ -31,3 +33,11 @@ So just count the square numbers.
 
 Let R = int(sqrt(n)). That's the root of the largest square in the range [1,n]. And 1 is the smallest root. So you have the roots from 1 to R, that's R roots. Which correspond to the R squares. So int(sqrt(n)) is the answer.
 '''
+
+class Solution {
+public:
+    int bulbSwitch(int n) {
+		return sqrt(n);
+    }
+};
+
