@@ -1,74 +1,124 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <unordered_map>
-
 using namespace std;
 int main()
 {
-	std::string input;
-
-	std::getline(std::cin, input, ' ');
-	int N = std::stoi(input);
-	std::getline(std::cin, input);
-	int Q = std::stoi(input);
-	std::string squares;
-	std::getline(std::cin, squares);
-	std::vector<std::string> spells;
-
-	while(std::getline(std::cin, input))
+	int N, Q;
+	cin >> N >> Q;
+	string s;
+	cin >> s;
+	vector<char> t(Q);
+	vector<char> d(Q);
+	for(int i = 0; i < Q; i += 1)
 	{
-		spells.emplace_back(input);
+		cin >> t[i] >> d[i];
 	}
 
-	std::vector<int> golems(N, 1);
-	int sum = N;
-	std::unordered_map<char, vector<int>> mapper;
-	for(int inx = 0; inx < N; inx += 1)
+	int left = 0, right = N - 1;
+	for(int i = Q - 1; i >= 0; i -= 1)
 	{
-		mapper[squares[inx]].emplace_back(inx);
-	}
-
-	for(std::string& input : spells)
-	{
-		vector<int> squares = mapper[input[0]];
-		vector<int> preGolems(golems);
-		for(int& inx : squares)
+		if(s[left] == t[i] && d[i] == 'L')
 		{
-			if(sum <= 0)
-			{
-				std::cout << std::to_string(sum) << std::endl;
-				return 0;
-			}
-			if(input[2] == 'L')
-			{
-				if(inx > 0)
-				{
-					golems[inx - 1] += preGolems[inx];
-				}
-					golems[inx] -= preGolems[inx];
-				if(inx == 0)
-				{
-					sum -= preGolems[inx];
-				}
-			}
-			else
-			{
-				if(inx < N - 1)
-				{
-					golems[inx + 1] += preGolems[inx];
-				}
-					golems[inx] -= preGolems[inx];
-				if(inx == N - 1)
-				{
-					sum -= preGolems[inx];
-				}
-			}
+			left += 1;
 		}
+		else if(s[right] == t[i] && d[i] == 'R')
+		{
+			right -= 1;
+		}
+
+		if(left > 0 && s[left - 1] == t[i] && d[i] == 'R')
+		{
+			left -= 1;
+		}
+		else if(right < N - 1 && s[right + 1] == t[i] && d[i] == 'L')
+		{
+			right += 1;
+		}
+
+		if(left > right)
+			break;
 	}
 
-	std::cout << std::to_string(sum) << std::endl;
-
+	std::cout << std::to_string(right - left + 1) << std::endl;
 	return 0;
 }
 
+#include <string>
+#include <iostream>
+#include <vector>
+
+//binary search to get the left and right boundary separately
+//easier to understand
+using namespace std;
+int main()
+{
+	int N, Q;
+	cin >> N >> Q;
+	string s;
+	cin >> s;
+	vector<char> t(Q);
+	vector<char> d(Q);
+	for(int i = 0; i < Q; i += 1)
+	{
+		cin >> t[i] >> d[i];
+	}
+
+	int L = -1;
+	int left = 0, right = N - 1;
+	while(left <= right)
+	{
+		int mid = (left + right) >> 1;
+		int inx = mid;
+		for(int i = 0; i < Q; i += 1)
+		{
+			if(s[inx] == t[i])
+			{
+				if(d[i] == 'L')
+					inx -= 1;
+				else
+					inx += 1;
+			}
+			if(inx < 0 || inx > N - 1) break;
+		}
+
+		if(inx < 0)
+		{
+			L = mid;
+			left = mid + 1;
+		}
+		else
+			right = mid - 1;
+	}
+
+	int R = N; 
+	left = 0, right = N - 1;
+	while(left <= right)
+	{
+		int mid = (left + right) >> 1;
+		int inx = mid;
+		for(int i = 0; i < Q; i += 1)
+		{
+			if(s[inx] == t[i])
+			{
+				if(d[i] == 'R')
+					inx += 1;
+				else
+					inx -= 1;
+			}
+			if(inx < 0 || inx > N - 1) break;
+		}
+
+		if(inx > N - 1)
+		{
+			R = mid;
+			right = mid - 1;
+		}
+		else
+			left = mid + 1;
+	}
+
+	std::cout << std::to_string(R - L - 1) << std::endl;
+
+	return 0;
+}

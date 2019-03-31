@@ -1,37 +1,20 @@
 #include <string>
 #include <iostream>
-#include <vector>
 
 using namespace std;
 int main()
 {
-	std::string input;
-	std::getline(std::cin, input);
-	int N = std::stoi(input);
-	std::string hats;
-	std::getline(std::cin, hats);
-
-	int red = 0, blue = 0;
-	for(char& hat : hats)
-	{
-		switch(hat)
-		{
-			case 'R':
-				red += 1;
-				break;
-			case 'B':
-				blue += 1;
-				break;
-		}
-	}
-
-	if(red > blue)
-	{
-		std::cout<< "Yes" << std::endl;
-	}
+	int n;
+	cin >> n;
+	string s;
+	cin >> s;
+	int r = 0;
+	for(char& c : s)
+		if(c == 'R') r++;
+		else r --;
+	if(r > 0)
+		cout << "Yes" << endl;
 	else
-	{
-		std::cout<< "No" << std::endl;
-	}
+		cout << "No" << endl;
 	return 0;
 }
