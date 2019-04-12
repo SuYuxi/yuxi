@@ -1,0 +1,13 @@
+# Vim autosave file
+*.swp
+
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib

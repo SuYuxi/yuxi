@@ -34,3 +34,49 @@ public:
 		return -1;
     }
 };
+
+//Dp
+//Bellman-Ford algorithm
+const int INF = 1e9;
+class Solution {
+public:
+    int shortestPathLength(vector<vector<int>>& graph) {
+		if(graph.empty()) return 0;
+		int N = graph.size();
+		vector<vector<int>> dist(1 << N, vector<int>(N, INF));
+		for(int start = 0; start < N; start += 1)
+		{
+			dist[1 << start][start] = 0; //distance from start
+		}
+		for(int path = 1; path < (1 << N); path += 1)
+		{
+			bool repeat = true;
+			while(repeat)
+			{
+				repeat = false;
+				for(int head = 0; head < N; head += 1)
+				{
+					int d = dist[path][head];
+					for(int& child : graph[head])
+					{
+						int pathChild = path | (1 << child);
+						if(d + 1 < dist[pathChild][child])
+						{
+							dist[pathChild][child] = d + 1;
+							if(path == pathChild)
+							{
+								repeat = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		int res = INF;
+		for(int& d : dist[(1 << N) - 1])
+		{
+			res = min(res, d);
+		}
+		return res;
+	}
+};
