@@ -1,5 +1,5 @@
 #Apple file
-#*.DS_Store
+.DS_Store
 
 # Vim autosave file
 *.swp
