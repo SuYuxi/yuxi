@@ -24,14 +24,14 @@ struct Node {
 
 class StreamChecker {
 public:
-    StreamChecker(vector<string>& words) {
+    StreamChecker(vector<string> words) {
 		buildTrieTree(words);
 		buildFailureLink();
 		curNode = root; 
     }
     
     bool query(char letter) {
-		int inx = letter - 'a';	
+		int inx = letter - 'a';
 		while(curNode != nullptr && curNode->children[inx] == nullptr)
 		{
 			curNode = curNode->fail;
@@ -101,6 +101,7 @@ private:
 					else
 					{
 						node->children[i]->fail = cur->children[i];
+						node->children[i]->isWord |= cur->children[i]->isWord;
 					}
 				}
 			}
