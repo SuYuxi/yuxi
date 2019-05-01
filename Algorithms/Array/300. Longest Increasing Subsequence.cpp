@@ -1,29 +1,17 @@
 //inspired by 334. Increasing Triplet Subsequence
 //https://leetcode.com/problems/increasing-triplet-subsequence/discuss/78993/Clean-and-short-with-comments-C%2B%2B
+#include <algorithm>
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
-		if(nums.empty()) return 0;
-		int res = 1;
-		vector<int> dp(nums.size(), INT_MAX);
+		vector<int> LIS;
 		for(int& num : nums)
 		{
-			int inx = 0;
-			while(inx < dp.size())
-			{
-				if(num <= dp[inx])
-				{
-					dp[inx] = num;
-					break;
-				}
-				else
-				{
-					inx += 1;
-					res = max(res, inx + 1);
-				}
-			}
+			vector<int>::iterator it = lower_bound(LIS.begin(), LIS.end(), num);
+			if(it == LIS.end()) LIS.emplace_back(num);
+			else *it = num;
 		}
-		return res;
+		return LIS.size();
     }
 };
 
@@ -31,10 +19,13 @@ public:
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
-		vector<int> dp(nums.size(), 1);
-		int maxLIS = 0;
-		for(int i = 0, maxCur = 0; i < nums.size(); i += 1, maxCur = 0)
+		if(nums.empty()) return 0;
+		vector<int> dp(nums.size(), 0);
+		dp[0] = 1;
+		int maxLIS = 1;
+		for(int i = 1; i < nums.size(); i += 1)
 		{
+			int maxCur = 0;
 			for(int j = 0; j < i; j += 1)
 			{
 				if(nums[i] > nums[j])
