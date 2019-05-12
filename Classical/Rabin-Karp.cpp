@@ -54,8 +54,7 @@ public:
 
 	int pow(int x, int y, int m) 
 	{ 
-		if (y == 0) 
-			return 1; 
+		if (y == 0) return 1; 
 		long p = pow(x, y / 2, m) % m; 
 		p = (p * p) % m; 
 	  
