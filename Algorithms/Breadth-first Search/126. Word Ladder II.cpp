@@ -121,11 +121,11 @@ public:
 
 private:
 	bool search(
-	std::unordered_set<string> &frontWords,
-	std::unordered_set<string> &backWords,
-	std::unordered_set<string> &wordSet,
-	std::unordered_map<string, vector<string>> &nextNodes,
-	bool flip)
+		std::unordered_set<string> &frontWords,
+		std::unordered_set<string> &backWords,
+		std::unordered_set<string> &wordSet,
+		std::unordered_map<string, vector<string>> &nextNodes,
+		bool flip)
 	{
 		if(frontWords.empty()) return false;
 		if(frontWords.size() > backWords.size()) return search(backWords, frontWords, wordSet, nextNodes, !flip);
@@ -161,11 +161,11 @@ private:
 	}
 
 	void getLadders(
-	string &beginWord,
-	string &endWord,
-	std::unordered_map<string, vector<string>> &nextNodes,
-	std::vector<string> &ladder,
-	std::vector<vector<string>> &ladders)
+		string &beginWord,
+		string &endWord,
+		std::unordered_map<string, vector<string>> &nextNodes,
+		std::vector<string> &ladder,
+		std::vector<vector<string>> &ladders)
 	{
 		if(beginWord == endWord)
 		{

@@ -5,8 +5,8 @@ public:
 		if(wordSet.find(endWord) == wordSet.end()) return 0;
 		if(beginWord == endWord) return 1;
 
-		std::unordered_set<string> head{beginWord};
-		std::unordered_set<string> tail{endWord};
+		std::unordered_set<string> head = {beginWord};
+		std::unordered_set<string> tail = {endWord};
 		wordSet.erase(endWord);
 		std::unordered_set<string> toVisit;
 		int len = beginWord.length();
