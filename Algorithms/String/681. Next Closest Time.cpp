@@ -40,3 +40,40 @@ public:
 		return res;
     }
 };
+
+class Solution {
+public:
+    string nextClosestTime(string time) {
+		vector<int> digits;
+		digits.emplace_back(time[0] - '0');
+		digits.emplace_back(time[1] - '0');
+		digits.emplace_back(time[3] - '0');
+		digits.emplace_back(time[4] - '0');
+
+		sort(digits.begin(), digits.end(), less<int>());
+		string ans = time;
+		for(int i = 4; i >= 0; i--)
+		{
+			if(i == 2) continue;
+			for(int& digit : digits)
+			{
+				if(digit > time[i] - '0')
+				{
+					char temp = ans[i];
+					ans[i] = '0' + digit;
+					if(validate(ans)) return ans;
+					ans[i] = temp;
+				}
+			}
+			ans[i] = '0' + digits[0];
+		} 
+		return ans;
+	}
+    
+    bool validate(string time) {
+	    int hour = stoi(time.substr(0, 2));
+	    int second = stoi(time.substr(3,2));
+	    if(hour <= 23 && second < 60) return true;
+	    return false;
+    }
+};
