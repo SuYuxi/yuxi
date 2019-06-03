@@ -14,10 +14,10 @@ public:
 		//9876
 		//XXX
 		//XX
-		//X
+		//X 
 		for(int bit = 1; bit < bits; bit += 1)
 		{
-			res += 9 * permutation(9, bit - 1);
+			res += 9 * permutation(9, bit - 1); //except zero in first bit
 		}
 
 		//Count number with same prefix
@@ -44,7 +44,7 @@ public:
     }
 
 private:
-	int permutation(int m, int n) {
+	int permutation(int m, int n) { //A m n
 		return n == 0 ? 1 : permutation(m, n - 1) * (m - n + 1);
 	}
 };
