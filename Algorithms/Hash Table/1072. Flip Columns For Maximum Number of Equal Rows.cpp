@@ -6,15 +6,12 @@ public:
 		for(vector<int>& v : matrix)
 		{
 			string s;	
-			string inv;	
 			for(int& i : v)
 			{
-				s.push_back('0' + i);
-				inv.push_back('0' - (i ^ 1));
+				s.push_back('0' + (i ^ v[0]));
 			}
 			hash[s]++;
-			hash[inv]++;
-			ans = max(ans, max(hash[s], hash[inv]));
+			ans = max(ans, hash[s]);
 		}
 		return ans;
     }
