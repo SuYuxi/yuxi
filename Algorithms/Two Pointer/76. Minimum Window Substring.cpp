@@ -10,7 +10,12 @@ public:
 		}
 		while(right < s.size())
 		{
-			if(hash[s[right++]]-- > 0) count--;
+			if(hash[s[right]] > 0)
+			{
+				count--;
+				right++;
+				hash[s[right]]--;
+			}
 			while(count == 0) 
 			{
 				if(right - left < window)
