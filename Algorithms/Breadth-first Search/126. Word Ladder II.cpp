@@ -115,8 +115,8 @@ public:
 		{
 			getLadders(beginWord, endWord, nextNodes, ladder, ladders);
 		}
-
 		return ladders;
+		
     }
 
 private:
@@ -182,4 +182,93 @@ private:
 		}
 	}
 
+};
+
+////two-end BFS by while loop
+class Solution {
+public:
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> wordSet(wordList.begin(), wordList.end());
+        unordered_set<string> head = {beginWord};
+        unordered_set<string> tail = {endWord};
+        vector<vector<string>> result; 
+        if(wordSet.find(endWord) == wordSet.end()) return result;
+
+        unordered_map<string, vector<string>> ladders;
+        bool flip = false;
+        bool found = false;
+
+        while(!head.empty() && !tail.empty())
+        {
+            if(found) break;
+            if(head.size() > tail.size())
+            {
+                swap(head, tail);
+                flip = !flip;
+            }
+            unordered_set<string> nextLevel;
+            for(string word : head) wordSet.erase(word);
+            for(string word : tail) wordSet.erase(word);
+            for(string word : head)
+            {
+                for(int i = 0; i < word.size(); i++)
+                {
+                    string curWord = word;
+                    for(char c = 'a'; c <= 'z'; c++)
+                    {
+                        curWord[i] = c;
+                        if(curWord == word) continue;
+                        if(tail.find(curWord) != tail.end())
+                        {
+                            found = true;
+                            if(!flip)
+                            {
+                                ladders[word].emplace_back(curWord);
+                            }
+                            else
+                            {
+                                ladders[curWord].emplace_back(word);
+                            }
+                        
+                        }
+                        else if(!found && wordSet.find(curWord) != wordSet.end())
+                        {
+
+                            nextLevel.insert(curWord);
+                            if(!flip)
+                            {
+                                ladders[word].emplace_back(curWord);
+                            }
+                            else
+                            {
+                                ladders[curWord].emplace_back(word);
+                            }                            
+                        }
+                    }
+                }
+
+            }
+			head = nextLevel; 
+        }
+        vector<string> path;
+        getPaths(beginWord, endWord, path, ladders, result);
+        return result;
+    }
+private:
+    void getPaths(string curWord, string endWord, vector<string>& path, unordered_map<string, vector<string>>& ladders,vector<vector<string>>& result) {
+		path.emplace_back(curWord);
+        if(curWord == endWord)
+        {
+            result.emplace_back(path);
+        }
+        else
+        {
+            for(string& word : ladders[curWord])
+            {     
+                getPaths(word, endWord, path, ladders, result);
+            }
+        }
+		path.pop_back();
+
+    }   
 };

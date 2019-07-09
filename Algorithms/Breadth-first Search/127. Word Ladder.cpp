@@ -10,12 +10,12 @@ public:
 		wordSet.erase(endWord);
 		std::unordered_set<string> toVisit;
 		int len = beginWord.length();
-		int distance = 1;
+		int length = 1;
         
 		while(!head.empty() && !tail.empty())
 		{
-			distance++;
-			if(head.size() < tail.size()) head.swap(tail);
+			length++;
+			if(head.size() > tail.size()) head.swap(tail);
 
 			for(string word : head)
 			{
@@ -27,7 +27,7 @@ public:
 						cur[inx] = ch;
 						if(tail.find(cur) != tail.end())
 						{
-							return distance;
+							return length;
 						}
 						if(wordSet.find(cur) != wordSet.end())
 						{
