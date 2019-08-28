@@ -10,7 +10,7 @@ public:
 		vector<int> res;
 		for(int& barcode : barcodes)
 		{
-			umap[barcode]++;
+			++umap[barcode];
 		}
 		for(pair<const int, int>& p : umap)
 		{
@@ -24,7 +24,7 @@ public:
 			if(res.empty() || p1.second != res.back() || heap.empty())
 			{
 				res.emplace_back(p1.second);
-				p1.first--;
+				--p1.first;
 				if(p1.first > 0)
 				{
 					heap.emplace(p1);
@@ -36,7 +36,7 @@ public:
 				heap.pop();
 				heap.emplace(p1);
 				res.emplace_back(p2.second);
-				p2.first--;
+				--p2.first;
 				if(p2.first > 0)
 				{
 					heap.emplace(p2);

@@ -5,9 +5,9 @@ public:
         int m = grid.size(), n = grid[0].size();
 		vector<vector<bool>> visited(m, vector<bool>(n, false));
 		deque<pair<int, int>> queue;
-        for(int i = 0; i < m; i++)
+        for(int i = 0; i < m; ++i)
         {
-            for(int j = 0; j < n; j++)
+            for(int j = 0; j < n; ++j)
             {
                 if(grid[i][j] == 1)
                 {
@@ -21,12 +21,12 @@ public:
 		while(!queue.empty())
 		{
 			int size = queue.size();
-			for(int i = 0; i < size; i++)
+			for(int i = 0; i < size; ++i)
 			{
 				tie(x, y) = queue.front();
 				queue.pop_front();
 
-				for(int d = 0; d < 4; d++)
+				for(int d = 0; d < 4; ++d)
 				{
 					int newX = x + directions[d][0];
 					int newY = y + directions[d][1];
