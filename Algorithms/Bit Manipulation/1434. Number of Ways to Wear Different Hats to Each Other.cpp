@@ -1,3 +1,4 @@
+//Top->Bottom
 class Solution {
 public:
     int numberWays(vector<vector<int>>& hats) {
@@ -35,6 +36,42 @@ public:
         dp[inx][hash] = number;
         return dp[inx][hash];
     }
+private:
+    int mod = 1e9 + 7;
+};
+
+//Bottom->Top
+class Solution {
+public:
+    int numberWays(vector<vector<int>>& hats) {
+        int n = hats.size();
+        vector<int> masks(1 << n, 0);
+        masks[0] = 1;
+        vector<vector<int>> peoples(41);
+        for(int p = 0; p < hats.size(); ++p)
+        {
+            for(int hat : hats[p])
+            {
+                peoples[hat].emplace_back(p);
+            }
+        }
+        for(int hat = 1; hat < peoples.size(); ++hat)
+        {
+            for(int mask = (1 << n) - 1; mask >= 0; --mask)
+            {
+                for(int& p: peoples[hat])
+                {
+                    if((mask & (1 << p)) == 0)
+                    {
+                        masks[mask | (1 << p)] += masks[mask];
+                        masks[mask | (1 << p)] %= mod;
+                    }
+                }
+            }
+        }
+        return masks[(1 << n) - 1];
+    }
+
 private:
     int mod = 1e9 + 7;
 };
