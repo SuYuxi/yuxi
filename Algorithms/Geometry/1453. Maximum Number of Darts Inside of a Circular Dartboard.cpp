@@ -1,14 +1,21 @@
 class Solution {
 public:
     int numPoints(vector<vector<int>>& points, int r) {
-        int n = points.size();
         int res = 1;
-        for(int i = 1; i < n; ++i)
+        double center[2][2];
+        for(int i = 1; i < points.size(); ++i)
         {
             for(int j = 0; j < i; ++j)
             {
-                if(dist(points[i], points[j]) > 2 * r) continue;
-                vector<vector<double>> center = getCenter(points[i], points[j], r);
+                double l = sqrt(pow(points[i][0] - points[j][0], 2) + pow(points[i][1] - points[j][1], 2));
+                if(l > 2 * r) continue;
+                double half[2] = {0.5 * (points[i][0] + points[j][0]), 0.5 * (points[i][1] + points[j][1])};
+                double d = sqrt(r*r - pow(points[i][0] - half[0], 2) - pow(points[i][1] - half[1], 2));
+                center[0][0] = half[0] - (d * (points[i][1] - points[j][1]) / l);
+                center[0][1] = half[1] + (d * (points[i][0] - points[j][0]) / l);
+                center[1][0] = half[0] + (d * (points[i][1] - points[j][1]) / l);
+                center[1][1] = half[1] - (d * (points[i][0] - points[j][0]) / l);
+                
                 int cur1 = 0, cur2 = 0;
                 for(vector<int>& point : points)
                 {
@@ -19,20 +26,5 @@ public:
             }
         }
         return res;
-    }
-    double dist(vector<int>& pointA, vector<int>& pointB) {
-        return sqrt(pow(pointA[0] - pointB[0], 2) + pow(pointA[1] - pointB[1], 2));
-    }
-    
-    vector<vector<double>> getCenter(vector<int>& pointA, vector<int>& pointB, int r) {
-        vector<vector<double>> center(2, vector<double>(2));
-        vector<double> half = {0.5 * (pointA[0] + pointB[0]), 0.5 * (pointA[1] + pointB[1])};
-        double d = sqrt(r*r - pow(pointA[0] - half[0], 2) - pow(pointA[1] - half[1], 2));
-        double l = dist(pointA, pointB);
-        center[0][0] = half[0] - (d * (pointA[1] - pointB[1]) / l);
-        center[0][1] = half[1] + (d * (pointA[0] - pointB[0]) / l);
-        center[1][0] = half[0] + (d * (pointA[1] - pointB[1]) / l);
-        center[1][1] = half[1] - (d * (pointA[0] - pointB[0]) / l);
-        return center;
     }
 };
