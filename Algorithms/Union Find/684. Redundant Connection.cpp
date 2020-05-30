@@ -20,7 +20,7 @@ public:
 			r = parent[r];
 		}
 		int temp;
-		while(parent[i] != i) // comparentss path
+		while(parent[i] != i) // compress path
 		{
 			temp = parent[i];
 			parent[i] = r;
