@@ -7,6 +7,26 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        if(root == nullptr) return 0;
+        int leftHeight = getLeftHeight(root);
+        int rightHeight = getRightHeight(root);
+        return leftHeight == rightHeight ? (1 << leftHeight) - 1 : countNodes(root->left) + 1 + countNodes(root->right);
+	}
+    
+    int getLeftHeight(TreeNode* node)
+    {
+        return node == nullptr ? 0 : 1 + getLeftHeight(node->left);
+    }
+        
+    int getRightHeight(TreeNode* node)
+    {
+        return node == nullptr ? 0 : 1 + getRightHeight(node->right);
+    }
+};
+
 //recursive
 class Solution {
 public:
