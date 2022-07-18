@@ -1,31 +1,22 @@
 class Solution {
 public:
-    int numSubmatrixSumTarget(vector<vector<int>>& A, int target) {
-		int m = A.size(), n = A[0].size();
-		for(int i = 0; i < m; i++)
-		{
-			for(int j = 1; j < n; j++)
-			{
-				A[i][j] += A[i][j - 1];	
-			}
-		}
-		int ans = 0;
-		unordered_map<int, int> counter;
-		for(int i = 0; i < n; i++)
-		{
-			for(int j = i; j < n; j++)
-			{
-				counter.clear();
-				counter[0] = 1;
-				int cur = 0;
-				for(int k = 0; k < m; k++)
-				{
-					cur += A[k][j] - (i > 0 ? A[k][i - 1] : 0);
-					ans += counter[cur - target];
-					counter[cur]++;
-				}
-			}
-		}
-		return ans;
+    int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) {
+        if(matrix.empty()) return 0;
+        int h = matrix.size(), w = matrix[0].size();
+        int res = 0;
+        for(int r1 = 0; r1 < h; ++r1) {
+            vector<int> prefixSum(w, 0);
+            for(int r2 = r1; r2 < h; ++r2) {
+                unordered_map<int, int> cnt = {{0, 1}};
+                int cur = 0;
+                for(int c = 0; c < w; ++c) {
+                    cur += matrix[r2][c];
+                    prefixSum[c] += cur;
+                    res += cnt[prefixSum[c] - target];
+                    ++cnt[prefixSum[c]];
+                }
+            }
+        }
+        return res;
     }
 };
